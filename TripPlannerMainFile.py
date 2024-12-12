@@ -1,9 +1,10 @@
-#this is the starter file for the Trip Planner API file.
+#This is the part that has the template of what to do. So I will type this out into a format that works for python.
+#Also, I will add a pytesting platform so that you get used to knowing how testing works in python. People usually do it two of the following ways: a. through using unit testing or b. Using pytest which allows for an easy way of testing as well. Testing is a very important part of documentation and helps in finding errors. Every function you write must be tested No excuses.
 
+#the libraries that will be used:
+from typing import NamedTuple, Tuple, Any
 
 """
-#lang dssl2
-
 # Final project: Trip Planner
 
 import cons
@@ -92,4 +93,33 @@ test 'My first find_nearby test':
         cons([0,1, "food", "Pierogi"], None)
 
 """
+### Basic Types ###
+
+#  - Latitudes and longitudes are numbers:
+Lat  = float
+Lon  = float
+
+#  - Point-of-interest categories and names are strings:
+Cat  = str
+Name = str
+
+### Raw Item Types ###
+
+#  - Raw positions are 2-element vectors with a latitude and a longitude
+RawPos = Tuple[Lat, Lon]
+
+#  - Raw road segments are 4-element vectors with the latitude and
+#    longitude of their first endpoint, then the latitude and longitude
+#    of their second endpoint
+RawSeg = Tuple[Lat, Lon, Lat, Lon]
+
+#  - Raw points-of-interest are 4-element vectors with a latitude, a
+#    longitude, a point-of-interest category, and a name
+RawPOI = Tuple[Lat, Lon, Cat, Name]
+
+### Contract Helpers ###
+
+
+
+
 
