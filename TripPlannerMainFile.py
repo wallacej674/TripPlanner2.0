@@ -4,6 +4,9 @@
 #the libraries that will be used:
 from typing import NamedTuple, Tuple, Any
 
+from abc import ABC, abstractmethod
+
+
 """
 # Final project: Trip Planner
 
@@ -118,8 +121,66 @@ RawSeg = Tuple[Lat, Lon, Lat, Lon]
 RawPOI = Tuple[Lat, Lon, Cat, Name]
 
 ### Contract Helpers ###
+ListC = [] #this is a list of 'T's (linear time): a regular list.
+
+# List of unspecified element type (constant time):
+List = lambda x: isInstance(List)
 
 
 
 
 
+
+
+
+# The actual interface for creating a triplanner class
+
+class TripPlanner(ABC):
+
+    #self, dst_cat all that belong to the category -> listC
+    def locate_all(self, dst_cat):
+        #to located all of the categories
+        #locate-all Takes a point-of-interest category; returns the positions of all pointsof-interest in the given category. The positions can returned be in any order you want, but the result should not include duplicates.
+        pass
+    
+    #self, staring lat, starting lon, name of goal -> ListC
+    def plan_route(self, src_lat, src_lon, dst_name):
+        # Returns the shortest route, if any, from the given source position
+        # to the point-of-interest with the given name.
+        #if you need more information refer to the project file.
+        pass
+    
+    #self, starting lat, starting lon, destination category, natural number(for the amount of destinations you want) -> ListC  
+    def find_nearby(self, src_lat, src_lon, dst_cat, num):
+        # Finds no more than `n` points-of-interest of the given category
+        # nearest to the source position.
+        # if you need more information refer to the project file.
+        pass
+
+
+# type of ADT we will be using for this project is Weighted graph. It would probably be the easiest to implement. In the future we could do other types of ADTs, but for now this is the ADT we will be working with.
+#the next step would be to make a solid impletmentation of a weighted undirected graph in this project. I do not think it will be that much of a challenge for us. Also, I do have some pseudo code for us to reference and the functions that would need to be created for the graph.
+
+#let Vertex? = nat?
+#let VertexList? = Cons.ListC[Vertex?]
+#let Weight? = AndC(num?, NotC(OrC(inf, -inf, nan)))
+#let OptWeight? = OrC(Weight?, NoneC)
+#struct WEdge:
+#let u: Vertex?
+#let v: Vertex?
+#let w: Weight?
+#let WEdgeList? = Cons.ListC[WEdge?]
+#interface WUGRAPH:
+#def len(self) -> nat?
+#def set_edge(self, u: Vertex?, v: Vertex?, w: OptWeight?) -> NoneC
+#def get_edge(self, u: Vertex?, v: Vertex?) -> OptWeight?
+#def get_adjacent(self, v: Vertex?) -> VertexList?
+#def get_all_edges(self) -> WEdgeList?
+#class WUGraph (WUGRAPH):
+#def __init__(self, size: nat?)
+#def sort_vertices(lst: Cons.list?) -> Cons.list?:
+#def sort_edges(lst: Cons.list?) -> Cons.list?:
+#def dfs(graph: WUGRAPH!, start: Vertex?, f: FunC[Vertex?, AnyC]) -> NoneC
+#def dfs_to_list(graph: WUGRAPH!, start: Vertex?) -> VertexList?
+
+#the code above is in the form of DSSL2. Try and convert the code to Python is the next step.
