@@ -127,14 +127,7 @@ ListC = [] #this is a list of 'T's (linear time): a regular list.
 List = lambda x: isInstance(List)
 
 
-
-
-
-
-
-
 # The actual interface for creating a triplanner class
-
 class TripPlanner(ABC):
 
     #self, dst_cat all that belong to the category -> listC
@@ -184,3 +177,79 @@ class TripPlanner(ABC):
 #def dfs_to_list(graph: WUGRAPH!, start: Vertex?) -> VertexList?
 
 #the code above is in the form of DSSL2. Try and convert the code to Python is the next step.
+
+isVertex = lambda x :  True if x >= 0 else False
+isVertexList = lambda x: True if isinstance(x, List) else False
+isWeight = lambda x: True if isinstance(x, int) and not None else False
+isOptWeight = lambda x: True if isWeight(x) or None else False
+
+#there is a lot that cannot be done in python. For example, Structs do not exist in Python. I wish that I could make a struct in python.
+
+#contains 4 sets of data u : vertex, v : vertex, w : weight, WEdgeList : Weighted Edge List that contains a list of all the edges that are connected by this weighted edge.
+
+#the structure of a weighted edge
+class WEdge():
+    def __init__(self, u, v, w, WEdgeList):
+        self.u = u
+        self.v = v
+        self.w = w
+        WEdgeList = self.WedgeList
+
+#the interface for a weighted edge
+class WUGRAPH(ABC):
+    #self -> Natural Number
+    #check the length of the WUGraph
+    def len(self):
+        pass
+
+    #self, vertex, vertex, weight -> None
+    #mutate the value of an edge into existence
+    def set_edge(self, u, v, w):
+        pass
+
+    #self, u, v -> optweight
+    #returns the weight associated with this vertex
+    def get_edge(self, u, v):
+        pass
+
+    #self v -> VertexList
+    #returns all adjacent vertexes based on the given vertex.
+    def get_adjacent(self, v):
+        pass
+
+    #self -> WEdgeList
+    #returns all of the weighted edges found in the graph
+    def get_all_edges(self):
+        pass
+#the class for a weighted graph
+class WUGraph(WUGRAPH):
+
+    def __init__(self, size):
+        pass
+
+    def sort_vertices(lst):
+        pass
+    
+    #def dfs(graph: WUGRAPH!, start: Vertex?, f: FunC[Vertex?, AnyC]) -> NoneC
+    #WUGRAPH, start: vertex?, (FunC[Vertex?, AnyC]) -> None
+    def dfs(graph, start, function):
+        pass
+
+    #sorts all the edges in a graph
+    def sort_edges(lst):
+        pass
+    
+    #makes a dfs list of the vertexes.
+    def dfs_to_list(graph, start):
+        pass
+
+
+
+
+
+
+
+
+
+
+
